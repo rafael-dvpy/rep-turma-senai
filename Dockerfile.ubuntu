@@ -1,3 +1,0 @@
-FROM ubuntu
-
-CMD [ "apt update && apt upgrade && apt install nano" ]
