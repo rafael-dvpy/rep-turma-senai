@@ -1,42 +1,36 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/test');
 
-// const Cat = mongoose.model('Cat', { name: String, age: Number });
+async function main () {
+    const Produto = mongoose.model('Produto',
+    {
+        codigo: Number,
+        nome: String,
+        preco: Number
+    })
 
-// const kitty = new Cat({ name: 'Zildjian', age: 3 });
-// kitty.save()
+    Produto.create({
+        codigo: 1,
+        nome: "Monitor AOC FullHD 144hz",
+        preco: 1100
+    })
 
-// Modelo de Produto
-// Codigo de barra - string ou number
-// Nome - String
-// preco - Number
+    await Produto.findOneAndUpdate(
+        {preco: 1100},
+        {
+            codigo: 2,
+            nome: "Monitor Genérico DELL",
+            preco: 400
+        }
+    )
 
-const Produto = mongoose.model('Produto',
-{
-    codigo: Number,
-    nome: String,
-    preco: Number
-})
+    await Produto.findOneAndDelete({preco: 400})
 
-// const monitor = new Produto({nome: "MonitorAOC"})
-
-// const monitor = new Produto({
-//         codigo: 1,
-//         nome: "Monitor AOC FullHD 144hz",
-//         preco: 1100
-//     }
-// )
-
-// monitor.save()
-
-// console.log("Monitor foi salvo com sucesso!")
-
-async function exibeTodosOsProdutos () {
+    
     console.log(await Produto.find())
+
+    console.log(await Produto.findOne({preco: 1100}))
+
 }
 
-async function exibeUmProduto () {
-    console.log(await Produto.findOne({preco: 1100, codigo: 2}))
-}
-
-exibeUmProduto()
+main()
