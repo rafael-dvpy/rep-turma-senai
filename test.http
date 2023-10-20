@@ -1,0 +1,28 @@
+###
+POST http://localhost:8000
+content-type: application/json
+
+{
+    "nome": "Monitor ThinkCentre",
+    "codigo": 192012910,
+    "preco": 500
+}
+
+###
+GET http://localhost:8000
+
+###
+GET http://localhost:8000/192012910
+
+###
+PUT http://localhost:8000/192012910
+content-type: application/json
+
+{
+    "nome": "Monitor Dell",
+    "codigo": 1920,
+    "preco": 1000
+}
+
+###
+DELETE http://localhost:8000/192012910
