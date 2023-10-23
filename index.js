@@ -40,4 +40,51 @@ async function atualizaProdutoPorId (idPesquisa, dadosNovos) {
     console.log(await ProdutoModel.findByIdAndUpdate(idPesquisa, dadosNovos))
 }
 
-const 
+async function criaMultiplosProdutos1 (vetorDeProdutos, quantidadeDeProdutos) {
+    let contador = 0
+    while(contador <= quantidadeDeProdutos -1){
+        criarProduto(vetorDeProdutos[contador])
+        contador++
+    }
+}
+
+async function criaMultiplosProdutos2 (vetorDeProdutos) {
+    let contador = 0
+    while(contador <= vetorDeProdutos.length -1){
+        criarProduto(vetorDeProdutos[contador])
+        contador++
+    }
+}
+
+// const produtos = [
+//     {
+//         nome: "Arroz",
+//         preco: 1,
+//         codigo: "j321kj3",
+//         disponivel: true
+//     },
+//     {
+//         nome: "Feijão",
+//         preco: 1,
+//         codigo: "j321kj3",
+//         disponivel: true
+//     },
+//     {
+//         nome: "Macarrão",
+//         preco: 1,
+//         codigo: "j321kj3",
+//         disponivel: true
+//     },
+//     {
+//         nome: "Maizena",
+//         preco: 1,
+//         codigo: "j321kj3",
+//         disponivel: true
+//     },
+//     {
+//         nome: "Manteiga",
+//         preco: 1,
+//         codigo: "j321kj3",
+//         disponivel: true
+//     },
+// ]
